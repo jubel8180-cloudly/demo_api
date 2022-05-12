@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello World")
+	fmt.Println("Hello World New")
 	config := apiserver.NewConfig()
 
 	s := apiserver.New(config)
