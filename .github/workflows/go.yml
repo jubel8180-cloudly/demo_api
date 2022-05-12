@@ -19,7 +19,7 @@ jobs:
         go-version: 1.18
 
     - name: Build
-      run: cd cmd && go build -v
+      run: cd cmd && go build main.go
 
     - name: Test ApiServer Package
       run: cd pkg/apiserver/ && go test -v 
