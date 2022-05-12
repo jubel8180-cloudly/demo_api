@@ -23,3 +23,17 @@ jobs:
 
     - name: Test ApiServer Package
       run: cd pkg/apiserver/ && go test -v 
+
+    - name: create zip file
+      run: cd cmd && zip main.zip main
+
+    - name: deploy lambda function
+      uses: appleboy/lambda-action@master
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: ap-south-1
+        function_name: my-function-from-action
+        zip_file: ./cmd/main.zip
+
+    
