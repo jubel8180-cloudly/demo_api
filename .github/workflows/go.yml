@@ -39,7 +39,6 @@ jobs:
         handler: main
         memory_size: 128
         timeout: 10
-        handler: foobar
         role: arn:aws:iam::115391213665:role/lambda-execution-role-s3-access
         runtime: go1.x
 
