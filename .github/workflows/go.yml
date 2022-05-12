@@ -18,8 +18,9 @@ jobs:
       with:
         go-version: 1.18
 
-    - name: Build
-      run: cd cmd && go build main.go
+    - name: Build binary
+      run: |
+        cd cmd && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o main main.go && zip main.zip main
 
     - name: Test ApiServer Package
       run: cd pkg/apiserver/ && go test -v 
@@ -35,5 +36,12 @@ jobs:
         aws_region: ap-south-1
         function_name: my-function-from-action
         zip_file: ./cmd/main.zip
+        handler: main
+        memory_size: 128
+        timeout: 10
+        handler: foobar
+        role: arn:aws:iam::115391213665:role/lambda-execution-role-s3-access
+        runtime: go1.x
+
 
     
