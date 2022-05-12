@@ -33,13 +33,10 @@ jobs:
       with:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_region: ap-south-1
+        aws_region: ${{ secrets.AWS_REGION }}
         function_name: my-function-from-action
         zip_file: ./cmd/main.zip
         handler: main
-        memory_size: 128
-        timeout: 10
-        role: arn:aws:iam::115391213665:role/lambda-execution-role-s3-access
         runtime: go1.x
 
 
