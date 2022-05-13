@@ -28,7 +28,7 @@ jobs:
     - name: create zip file
       run: cd cmd && zip main.zip main
 
-    - name: deploy lambda function
+    - name: deploy lambda function 1
       uses: appleboy/lambda-action@master
       with:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
